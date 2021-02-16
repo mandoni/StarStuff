@@ -1,20 +1,20 @@
 :root{
-    --primary: #3acbf7;
+    --primary: #778F14;
 }
 
 .btn{
     padding: 8px, 20px;
-    border-radius: 4ox;
-    outline: none;
+    border-radius: 4px;
+    outline: none; 
     border: none;
     cursor: pointer;
 }
 
 .btn:hover{
     padding: 8px 20px;
-    transition:  all 0.3s ease-out;
-    background: #fff;
-    color: #6568f4;
+    transition:  all 0.4s ease-out;
+    background: #8daa17 ;
+    color: #fff;
     transition: 250ms;
 }
 
@@ -28,7 +28,7 @@
     padding: 8px 20px;
     border-radius: 4px;
     border: 1px solid var(--primary);
-    transition: all 0.3s ease-out;
+    transition: all 0.4s ease-out;
 }
 
 .btn--medium{

@@ -21,7 +21,7 @@ export const Button = ({
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
     return(
-        <button className = {`btn ${checkButtonStyle} ${checkButtonSize}`} onClick = {onclick} type={type}> 
+        <button className = {`btn ${checkButtonStyle} ${checkButtonSize}`} onClick = {onClick} type={type}> 
             {children}
         </button>
     )
