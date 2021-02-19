@@ -3,6 +3,7 @@ import {MenuItems} from "./MenuItem"
 import 'bootstrap/dist/css/bootstrap.css';
 import './Navbar.css'
 import {Button} from "../Button"
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
     state= { clicked: false }
@@ -30,7 +31,7 @@ class Navbar extends Component {
                     })}
                     
                 </ul>
-                <Button className="boton">SignUp</Button>
+                <Link to="signup"><Button className="boton">SignUp</Button></Link>
             </nav>
         )
     }
