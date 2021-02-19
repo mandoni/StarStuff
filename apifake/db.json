@@ -1,0 +1,19 @@
+{
+    "usuarios" : 
+    [
+        {
+            "id" : 1,
+            "apellido": "Estrada",
+            "nombre": "Rogelio",
+            "username": "Rogestrada",
+            "password": "827ccb0eea8a706c4c34a16891f84e7b"
+        }, 
+        {
+            "id" : 2,
+            "apellido": "Lara",
+            "nombre": "Fred",
+            "username": "FredLara1521",
+            "password": "e35cf7b66449df565f93c607d5a81d09"
+        }
+    ]
+}

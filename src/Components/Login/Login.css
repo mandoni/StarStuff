@@ -1,0 +1,136 @@
+.dim-img{
+    height: 150px;
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.base-container{
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header{
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 5px #76858f96;
+    padding: 3%;
+}
+
+
+.form{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-routing{
+    float: right;
+    border-radius: 4px;
+    outline: none; 
+    border: none;
+    cursor: pointer;
+    margin: auto;
+    position: relative;
+    background-color: #778F14;
+    color: white;
+    padding: 8px 15px;
+}
+
+.btn-routing:hover{
+    transition:  all 0.4s ease-out;
+    background: #8daa17 ;
+    color: #fff;
+    transition: 250ms;
+}
+
+.btn-close{
+    float: left;
+    background-color: transparent;
+    font-size: 15px;
+    color: gray;
+    border: none;
+    padding: 8px 15px;   
+}
+
+.btn-close:hover{
+    transition:  all 0.7s ease-out;
+    transition: 250ms;
+}
+
+.mini-nav{
+    width: 250px;
+    float: left;
+}
+
+.routing-signup{
+    width: 250px;
+    float: right;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+}
+
+label{
+    font-size: 20px;
+}
+
+input{
+    margin-top: 6px;
+    min-width:  18em;
+    height: 37px;
+    padding: 0 10px;
+    font-size: 16px;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
+    transition: all 250mx ease-in-out,
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0px 0px 12px 0.8px #0e81ce96
+}
+
+.footer{
+    margin-top: 1em;
+}
+
+.btn-login{
+    color: white;
+    font-size: 21px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: #235390;
+    border-radius: 4px;
+    transition:  all 250 ease-in-out;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    
+}
+
+.btn-login:hover{
+    background-color: #09418a;
+}
+
+.btn-login:focus{
+    outline: none;
+}
