@@ -7,6 +7,7 @@
     font-size: 22px;
     color: #fff;
     padding-top: 15px;
+    position: relative;
 }
 
 .navbar-logo{
@@ -14,6 +15,7 @@
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
+    position: relative;
 }
 
 .fa-react{
@@ -40,7 +42,6 @@
 }
 
 .nav-links:hover{
-    font-size: 22.5px;
     background-color: #133b70;
     color: white;
     font-size: 5px-large;

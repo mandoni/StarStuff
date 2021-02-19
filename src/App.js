@@ -11,9 +11,10 @@ import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 
 function App() {
+  
   return (
     <Router>
-      <div className="nav">
+      <div>
         <Navbar />
       </div>
       <div className="body">
