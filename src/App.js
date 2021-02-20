@@ -10,6 +10,8 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 
+import './App.css'
+
 function App() {
   
   return (

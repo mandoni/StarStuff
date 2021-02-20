@@ -14,8 +14,6 @@ class Login extends React.Component {
                     <Link to="/home">
                         <button type="button" className="btn-close">X</button>
                     </Link>
-                </div>
-                <div className="routing-signup">
                     <Link to="/signup">
                         <button type="button" className="btn-routing">Registro</button>
                     </Link>
