@@ -42,3 +42,38 @@
   color: #fff;
   font-size: 100px;
 }
+
+.btn-close{
+  float: left;
+  background-color: transparent;
+  font-size: 15px;
+  color: gray;
+  border: none;
+  padding: 8px 15px;   
+}
+
+.btn-routing{
+  float: right;
+  border-radius: 4px;
+  outline: none; 
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  position: relative;
+  background-color: #778F14;
+  color: white;
+  padding: 8px 15px;
+}
+
+.btn-routing:hover{
+  transition:  all 0.4s ease-out;
+  background: #8daa17 ;
+  color: #fff;
+  transition: 250ms;
+}
+
+.mini-nav{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 1.8%;
+}

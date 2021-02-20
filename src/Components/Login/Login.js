@@ -10,14 +10,6 @@ class Login extends React.Component {
     render() {
         return(
             <div className="base-container">
-                <div className="mini-nav">
-                    <Link to="/home">
-                        <button type="button" className="btn-close">X</button>
-                    </Link>
-                    <Link to="/signup">
-                        <button type="button" className="btn-routing">Registro</button>
-                    </Link>
-                </div> 
                 <div className="header">
                     Login
                     <div className="image">
@@ -26,8 +18,6 @@ class Login extends React.Component {
                 </div> 
                 
                 <div className="content">
-                   
-                    <hr/>
                     <div className="form">
                         <div className="form-group">
                             <label htmlFor="username">Usuario</label>

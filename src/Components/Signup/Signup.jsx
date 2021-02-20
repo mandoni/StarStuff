@@ -10,14 +10,6 @@ class Signup extends React.Component {
     render() {
         return(
             <div className="base-container">
-                <div className="mini-nav">
-                    <Link to="/home">
-                        <button type="button" className="btn-close">X</button>
-                    </Link>
-                    <Link to="/login">
-                        <button type="button" className="btn-routing">Login</button>
-                    </Link>
-                </div> 
                 <div className="header">
                     Registro
                     <div className="image">
@@ -25,8 +17,6 @@ class Signup extends React.Component {
                     </div>
                 </div> 
                 <div className="content">
-                    
-                    <hr/>
                     <div className="form">
                         <div className="form-group">
                             <label htmlFor="name">Nombre</label>

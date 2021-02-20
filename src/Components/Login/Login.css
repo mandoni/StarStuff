@@ -56,14 +56,7 @@
     transition: 250ms;
 }
 
-.btn-close{
-    float: left;
-    background-color: transparent;
-    font-size: 15px;
-    color: gray;
-    border: none;
-    padding: 8px 15px;   
-}
+
 
 .btn-close:hover{
     transition:  all 0.7s ease-out;
