@@ -19,8 +19,8 @@
 }
 
 .btn--primary{
-    background-color: var(--primary);
-    color: #242424;
+    background-color:  #778F14;
+    color: white;
     border:  1px solid var(--primary);
 }
 
@@ -36,6 +36,7 @@
 .btn--medium{
     padding: 8px 20px;
     font-size: 18px;
+    color: white;
 }
 
 .btn--large{

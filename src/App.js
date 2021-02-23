@@ -27,9 +27,7 @@ function App() {
           <Route path="/news/:title">
             <Noticia />
           </Route>
-          <Route path= "/" exact>
-            <Home />
-          </Route>
+          <Route path= "/" exact componen = {Home} />
           <Route path= "/home">
             <Home />
           </Route>
