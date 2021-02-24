@@ -11,47 +11,49 @@ import Physics from '../../Media/physics.svg'
 
 function Cards() {
     return (
-        <div className="cards">
-            <h1>Secciones principales</h1>
-            <div className="cards__container">
-                <div className="cards__wrapper">
-                    <ul className="cards__items">
-                        <CardItem className="card-back"
-                            src= {Espacio}
-                            text="Espacio"
-                            path="/secciones"
-                        />
-                        <CardItem className="card-back"
-                            src= {Tecnology}
-                            text="Tecnologia"
-                            path="/secciones"
-                        />
-                        <CardItem className="card-back"
-                            src= {Biologie}
-                            text="Biología"
-                            path="/secciones"
-                        />
-                    </ul>
-                    <ul className="cards__items">
-                        <CardItem className="card-back"
-                            src= {Philosophy}
-                            text="Filosofía"
-                            path="/secciones"
-                        />
-                        <CardItem className="card-back"
-                            src= {Society}
-                            text="Sociedad"
-                            path="/secciones"
-                        />
-                        <CardItem className="card-back"
-                            src= {Physics}
-                            text="Física"
-                            path="/secciones"
-                        />
-                    </ul>
+        <a name="sec">
+            <div className="cards">
+                <h1>Secciones principales</h1>
+                <div className="cards__container">
+                    <div className="cards__wrapper">
+                        <ul className="cards__items">
+                            <CardItem className="card-back"
+                                src= {Espacio}
+                                text="Espacio"
+                                path="/secciones"
+                            />
+                            <CardItem className="card-back"
+                                src= {Tecnology}
+                                text="Tecnologia"
+                                path="/secciones"
+                            />
+                            <CardItem className="card-back"
+                                src= {Biologie}
+                                text="Biología"
+                                path="/secciones"
+                            />
+                        </ul>
+                        <ul className="cards__items">
+                            <CardItem className="card-back"
+                                src= {Philosophy}
+                                text="Filosofía"
+                                path="/secciones"
+                            />
+                            <CardItem className="card-back"
+                                src= {Society}
+                                text="Sociedad"
+                                path="/secciones"
+                            />
+                            <CardItem className="card-back"
+                                src= {Physics}
+                                text="Física"
+                                path="/secciones"
+                            />
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     );
 }
 export default Cards
