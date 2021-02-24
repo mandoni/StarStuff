@@ -90,3 +90,22 @@ video {
     }
   }
   
+  .about-component{
+    background: #235390;
+    color: rgb(231, 231, 231);
+    padding: 13.5% 15%;
+  }
+
+  .titulo{
+    margin-bottom: 50px;
+    font-size: 50px;
+  }
+
+  .subtitulo{
+    margin-bottom: 35px;
+    font-size: 27px;
+  }
+
+  .parrafo{
+    font-size: 20px;
+  }
