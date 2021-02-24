@@ -53,10 +53,11 @@
   
   .nav-item-login {
     color: black;
+    -webkit-text-stroke: .6px rgb(15, 3, 3);
     height: 80px;
     display: flex;
     align-items: center;
-    text-decoration: none;
+    text-decoration: solid;
     background-color: rgb(223, 223, 223);
   }
 

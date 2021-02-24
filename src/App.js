@@ -24,10 +24,9 @@ function App() {
       </div>
       <div className="body">
         <Switch>
-          <Route path="/news/:title">
-            <Noticia />
+          <Route path= "/" exact>
+            <Home />
           </Route>
-          <Route path= "/" exact componen = {Home} />
           <Route path= "/home">
             <Home />
           </Route>
