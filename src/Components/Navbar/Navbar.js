@@ -24,7 +24,7 @@ function Navbar() {
     window.addEventListener('resize', showButton);
 
     return (
-        <a name="barra">
+        <a name="inicio">
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo">
@@ -40,7 +40,7 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                                <a href="#sec" className="nav-links" onClick={closeMobilMenu}>
+                                <a href="#secciones" className="nav-links" onClick={closeMobilMenu}>
                                     Secciones
                                 </a>
                         </li>

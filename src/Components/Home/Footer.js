@@ -63,7 +63,7 @@ function Footer() {
             <section class='social-media'>
                 <div class='social-media-wrap'>
                 <div class='footer-logo'>
-                    <a href="#barra" className='social-logo'>
+                    <a href="#inicio" className='social-logo'>
                     StarStuff
                     <i class='fas fa-globe-americas' />
                     </a>
