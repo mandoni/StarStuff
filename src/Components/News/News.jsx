@@ -10,10 +10,10 @@ const News = () => {
     }, [])
 
     const obtenerDatos = async () => {
-        const data = await fetch('http://newsapi.org/v2/top-headlines?country=mx&apiKey=6204627390254ac2931b073251803604')
-        //const data = await fetch("http://localhost:3001/articles")
+        //const data = await fetch('http://newsapi.org/v2/top-headlines?country=mx&apiKey=6204627390254ac2931b073251803604')
+        const data = await fetch("http://localhost:4000/postDocument")
         const scsNew = await data.json()
-        setNoticia(scsNew.articles)
+        setNoticia(scsNew)
     }
     return(
         
@@ -22,9 +22,9 @@ const News = () => {
             <ul>
                 {
                     noticia.map(item => (
-                        <li key={item.title}>
+                        <li key={item._id}>
                             <Link to = {`/news/${item.title}`}>{item.title}</Link> <br/>
-                            {item.description}
+                            {item.encabezado}
                             <hr/>
                         </li>
                     ))

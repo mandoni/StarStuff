@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 
 const Noticia = () => {
 
-    const {title} = useParams()
-    console.log(title)
+    const {_id} = useParams()
+    console.log(_id)
 
     const [noticia, setNoticia] = React.useState([])
 
@@ -13,7 +13,7 @@ const Noticia = () => {
     }, [])
 
     const obtenerDatos = async () => {
-        const data = await fetch(`newsapi.org/v2/top-headlines?country=mx&apiKey=6204627390254ac2931b073251803604/${title}`)
+        const data = await fetch(`http://localhost:4000/postDocument/${_id}`)
         const scsNew = await data.json()
         setNoticia(scsNew)
     }

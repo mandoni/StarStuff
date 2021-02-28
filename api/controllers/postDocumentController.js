@@ -1,5 +1,6 @@
 const express = require('express')
 var router = express.Router()
+var ObjectID = require('mongoose').Types.ObjectId
 
 var { postDocument } = require('../models/postDocument')
 
@@ -36,7 +37,14 @@ router.put('/:id', (req, res) => {
 
     var updatedRecord = {
         title: req.body.title,
-        message: req.body.message
+        autor: req.body.autor,
+        fecha: req.body.fecha,
+        encabezado : req.body.encabezado,
+        seccion : req.body.seccion,
+        documento : req.body.documento,
+        urlImg : req.body.urlImg,
+        fuente : req.body.fuente,
+        urlFuente : req.body.urlFuente
     }
 
     postDocument.findByIdAndUpdate(req.params.id, { $set: updatedRecord },{new:true}, (err, docs) => {

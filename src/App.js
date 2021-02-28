@@ -5,13 +5,17 @@ import{
   Route,
   Link
 } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./Actions/store";
+import { Container, AppBar, Typography } from "@material-ui/core";
+
 
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import News from './Components/News/News';
-import Noticia from './Components/News/Noticia';
+import PostMessages from "./Components/CRUD/postDocument";
 
 import './App.css'
 
@@ -51,6 +55,11 @@ function App() {
                 </Link>
               </div> 
             <Signup />
+          </Route>
+          <Route path= "/addNews">
+          <Provider store={store}>
+              <PostMessages />
+          </Provider>
           </Route>
         </Switch>
       </div>
