@@ -12,7 +12,6 @@ export const ACTION_TYPES = {
 export const fetchAll = () => dispatch => {
     api.postDocument().fetchAll()
         .then(res => {
-            console.log(res)
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,
                 payload: res.data
