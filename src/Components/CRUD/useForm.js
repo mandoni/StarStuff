@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 
 const useForm = (initialFieldValues,setCurrentId) => {
     
     const [values, setValues] = useState(initialFieldValues)
+
+    const [errors, setErrors] = useState({})
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -16,6 +18,8 @@ const useForm = (initialFieldValues,setCurrentId) => {
     return {
         values,
         setValues,
+        errors, 
+        setErrors,
         handleInputChange
     };
 }

@@ -7,7 +7,6 @@ import{
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./Actions/store";
-import { Container, AppBar, Typography } from "@material-ui/core";
 
 
 import Navbar from './Components/Navbar/Navbar';

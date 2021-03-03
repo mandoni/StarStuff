@@ -40,12 +40,12 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                                <a href="#secciones" className="nav-links" onClick={closeMobilMenu}>
+                                <a href="/home#secciones" className="nav-links" onClick={closeMobilMenu}>
                                     Secciones
                                 </a>
                         </li>
                         <li className="nav-item">
-                            <a href="#nosotros" className="nav-links" onClick={closeMobilMenu}>
+                            <a href="/home#nosotros" className="nav-links" onClick={closeMobilMenu}>
                                 Sobre nosotros
                             </a>
                         </li>
