@@ -58,6 +58,7 @@ function App() {
           <Route path= "/addNews">
           <Provider store={store}>
               <PostMessages />
+
           </Provider>
           </Route>
         </Switch>

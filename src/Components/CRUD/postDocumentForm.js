@@ -1,13 +1,17 @@
 import { TextField, InputLabel, Select, MenuItem, withStyles, Button} from '@material-ui/core'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import useForm from "./useForm";
+import { connect } from "react-redux";
+import * as actions from "../../Actions/postDocumnet";
+import ButterToast, { Cinnamon } from "butter-toast";
+import { AssignmentTurnedIn } from "@material-ui/icons";
 
 const initilFileValues = {
     title: '',
     autor: '',
     fecha: '',
     encabezado: '',
-    seccion: 1,
+    seccion: '',
     documento:  '',
     urlImg: '',
     fuente: '',
@@ -33,6 +37,15 @@ const styles = theme => ({
 
 const postDocumentForm = ({classes, ...props}) => {
 
+    useEffect(() => {
+        if(props.currentId != 0){
+            setValues({
+                ...props.postDocumnetList.find(x => x._id == props.currentId)
+            })
+            setErrors({})
+        }
+    }, [props.currentId])
+
     const validate = () => {
         let temp = {...errors}
         temp.tittle = values.title?"":"Este campo es requerido"
@@ -53,16 +66,29 @@ const postDocumentForm = ({classes, ...props}) => {
         setValues,
         errors,
         setErrors,
-        handleInputChange 
-    } = useForm(initilFileValues);
+        handleInputChange,
+        resetForm
+    } = useForm(initilFileValues, props.setCurrentId);
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(values)
-        if(validate()){
-            window.alert('Todo en orden')
+        const onSuccess = () => {
+            ButterToast.raise({
+                content: <Cinnamon.Crisp title="Noticia"
+                    content="La noticia creada correctamente"
+                    scheme={Cinnamon.Crisp.SCHEME_BLUE}
+                    icon={<AssignmentTurnedIn />}
+                />
+            })
+            resetForm()
         }
-    } 
+        if (validate()) {
+            if (props.currentId == 0)
+                props.createPostDocument(values, onSuccess)
+            else
+                props.updatePostDocument(props.currentId, values, onSuccess)
+        }
+    }
 
     return (
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} 
@@ -127,4 +153,13 @@ const postDocumentForm = ({classes, ...props}) => {
     )
 }
 
-export default withStyles()(postDocumentForm)
+const mapStateToProps = state => ({
+    postDocumnetList: state.postDocument.list
+})
+
+const mapActionToProps = {
+    createPostDocument: actions.create,
+    updatePostDocument: actions.update
+}
+
+export default connect(mapStateToProps, mapActionToProps)(withStyles()(postDocumentForm));

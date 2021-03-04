@@ -15,12 +15,20 @@ const useForm = (initialFieldValues,setCurrentId) => {
         })
     }
 
+    const resetForm =() =>{
+        setValues(initialFieldValues)
+        setErrors({})
+        setCurrentId(0)
+    }
+
+
     return {
         values,
         setValues,
         errors, 
         setErrors,
-        handleInputChange
+        handleInputChange,
+        resetForm
     };
 }
 
