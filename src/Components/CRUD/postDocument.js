@@ -1,26 +1,41 @@
 import React, {useEffect, Fragment, useState} from 'react'
 import { connect } from "react-redux";
 import * as actions from "../../Actions/postDocumnet";
-import { Button, Divider, Grid, List, ListItem, ListItemText } from '@material-ui/core';
-import { AppBar, Container, Typography, Paper, withStyles } from "@material-ui/core";
+import { Button, Card, Divider, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { CardHeader, Avatar, IconButton,  } from "@material-ui/core";
+import { AppBar, Container, Typography, Paper, withStyles, CardContent, CardActions } from "@material-ui/core";
 import PostDocumentForm from './postDocumentForm';
 import ButterToast, { POS_RIGHT, POS_TOP, Cinnamon } from "butter-toast";
-import { DeleteSweep } from "@material-ui/icons";
+import { DeleteSweep, RecordVoiceOver } from "@material-ui/icons";
+import './postDocumentForm.css'
+import { blueGrey } from '@material-ui/core/colors';
 
 
 
 const styles = theme => ({
     paper: {
-        margin: theme.spacing(3),
+        //margin: theme.spacing(3),
         padding: theme.spacing(2)
     },
     smMargin: {
-        margin: theme.spacing(1)
+        //margin: theme.spacing(1)
     },
     actionDiv: {
         textAlign: "center"
-    }
+    },
+    avatar: {
+        backgroundColor: blueGrey[500],
+        
+      },
+      root: {
+        maxWidth: 500,
+      },
+      media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+      }
 })
+
 
 const postDocument = ({ classes, ...props }) => {
     /*const [x, setX] = useState(0)
@@ -37,17 +52,42 @@ const postDocument = ({ classes, ...props }) => {
         const onSuccess = () => {
             ButterToast.raise({
                 content: <Cinnamon.Crisp title="Noticia"
-                    content="La noticia ha sido eliminada"
+                    content={() => <div>La noticia ha sido eliminada</div>}
                     scheme={Cinnamon.Crisp.SCHEME_BLUE}
                     icon={<DeleteSweep />}
                 />
             })
         }
-
+       
         if(window.confirm('¿Esta seguro de eliminar esta noticia?')){
             props.deletePostDocument(id, onSuccess)
         }
     }
+
+    const seccionSeleccionada = (sec) => {
+        switch (sec) {
+            case "1":
+                return "ESP"
+            case "2":
+                return "TEC"
+            case "3":
+                return "BIO"
+            case "4":
+                return "FIL"
+            case "5":
+                return "SOC"
+            case "6":
+                return "PHS"    
+            
+            default:
+                break;
+        }
+    }
+
+    const Img = (url) =>{
+        return url
+    }
+
 
     return (
         <Container maxWidth="lg">
@@ -73,38 +113,59 @@ const postDocument = ({ classes, ...props }) => {
                                         <Fragment key={index}>
                                             <ListItem>
                                                 <ListItemText>
-                                                    <Typography variant="h6">
-                                                        {record.title}
-                                                    </Typography>
-                                                    <div>
-                                                          {record.encabezado}
-                                                    </div>
-                                                    <div className={classes.actionDiv}>
-                                                    <Button variant="contained" color="primary" size="small"
-                                                        className={classes.smMargin}
-                                                        onClick={() => setCurrentId(record._id)}>
-                                                        Editar
-                                                    </Button>
-                                                    <Button variant="contained" color="secondary" size="small"
-                                                        className={classes.smMargin}
-                                                        onClick={() => onDelete(record._id)}>
-                                                        Borrar
-                                                    </Button>
-                                                </div>
-                                                </ListItemText>
-                                            </ListItem>
-                                            <Divider component="li"/>
-                                        </Fragment>
-                                    )
-                                })
-                            }
-                        </List>
-                    </Paper>
-                </Grid>
+                                                <Card className={classes.root} className="NoticiasRead">
+                                                    <CardHeader
+                                                        avatar={
+                                                            <Avatar aria-label="recipe" className={classes.avatar}>
+                                                                {seccionSeleccionada(record.seccion)}
+                                                            </Avatar>
+                                                        }
+                                                        title={record.title}
+                                                        subheader = {record.fecha}
+                                                    />
+                                                    
+                                                    <img src={record.urlImg} className="imagen overflow" 
+                                                    onerror="if (this.src == '') ? this.src = '../../Media/no-image.png';"/>
+
+                                                    <CardContent >
+                                                         
+                                                        <Typography variant="body2" color="textSecondary" component="p">
+                                                            {record.encabezado}
+                                                        </Typography>
+
+                                                        <CardActions disableSpacing>
+                                                        <div className={classes.actionDiv}>
+                                                            <Button variant="contained" color="primary" size="small"
+                                                                id="myBtn"
+                                                                className={classes.smMargin}
+                                                                onClick={() => setCurrentId(record._id)}
+                                                                onclick="topFunction()"
+                                                                href="#">
+                                                                Editar
+                                                            </Button>
+                                                            <Button variant="contained" color="secondary" size="small"
+                                                                className={classes.smMargin}
+                                                                onClick={() => onDelete(record._id)}>
+                                                                Borrar
+                                                            </Button>
+                                                        </div>
+                                                        </CardActions>
+                                                    </CardContent>
+                                                </Card>                                                    
+                                            </ListItemText>
+                                        </ListItem>
+                                        <br/>
+                                    </Fragment>
+                                )
+                            })
+                        }
+                    </List>
+                </Paper>
             </Grid>
-            <ButterToast position={{vertical:POS_TOP, horizontal:POS_RIGHT}}/>
-        </Container>
-       
+        </Grid>
+        <ButterToast position={{vertical:POS_TOP, horizontal:POS_RIGHT}}/>
+        <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+    </Container>
     );
 }
 

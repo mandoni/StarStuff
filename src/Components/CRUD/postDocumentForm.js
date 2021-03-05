@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../Actions/postDocumnet";
 import ButterToast, { Cinnamon } from "butter-toast";
 import { AssignmentTurnedIn } from "@material-ui/icons";
+import './postDocumentForm.css'
 
 const initilFileValues = {
     title: '',
@@ -31,7 +32,7 @@ const styles = theme => ({
     },
     postBtn: {
         width: "50%",
-        justifyContent: 'center'
+        //justifyContent: 'center'
     }
 })
 
@@ -75,7 +76,7 @@ const postDocumentForm = ({classes, ...props}) => {
         const onSuccess = () => {
             ButterToast.raise({
                 content: <Cinnamon.Crisp title="Noticia"
-                    content="La noticia creada correctamente"
+                content={() => <div className="notificacion">La noticia agregada correctamente</div>}
                     scheme={Cinnamon.Crisp.SCHEME_BLUE}
                     icon={<AssignmentTurnedIn />}
                 />
@@ -91,11 +92,12 @@ const postDocumentForm = ({classes, ...props}) => {
     }
 
     return (
-        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} 
+        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`}  
         onSubmit={handleSubmit}>
+            <div className="FormularioCRUD">
             <TextField name="title" variant="outlined" label="Título" fullWidth value={values.title} onChange={handleInputChange}  {...(errors.title && { error: true, helperText: errors.title })}/>
             <TextField name="autor" variant="outlined" label="Autor" fullWidth value={values.autor} onChange={handleInputChange}  {...(errors.autor && { error: true, helperText: errors.autor })}/>
-            <TextField
+            <TextField 
                 name="encabezado"
                 variant="outlined"
                 label="Encabezado"
@@ -106,7 +108,7 @@ const postDocumentForm = ({classes, ...props}) => {
                 onChange={handleInputChange}
                 {...(errors.encabezado && { error: true, helperText: errors.encabezado })}
             />
-            <TextField name="fecha" type="date" label="Fecha" defaultValue='31-01-2021' fullWidth value={values.fecha} onChange={handleInputChange}
+            <TextField  name="fecha" type="date" label="Fecha" defaultValue='31-01-2021' fullWidth value={values.fecha} onChange={handleInputChange}
                 InputLabelProps={{
                 shrink: true}}
                 {...(errors.fecha && { error: true, helperText: errors.fecha })}/>
@@ -142,6 +144,7 @@ const postDocumentForm = ({classes, ...props}) => {
             <TextField name="fuente" variant="outlined" label="Fuente" fullWidth value={values.fuente} onChange={handleInputChange}
               {...(errors.fuente && { error: true, helperText: errors.fuente })}/>
             <TextField name="urlFuente" variant="outlined" label="URLFuente" fullWidth value={values.urlFuente} onChange={handleInputChange}/>
+            <br/><br/>
             <Button
                 variant="contained"
                 color="primary"
@@ -149,6 +152,10 @@ const postDocumentForm = ({classes, ...props}) => {
                 type="submit"
                 className={classes.postBtn}
             >Enviar</Button>
+
+            </div>
+            
+            
         </form>
     )
 }

@@ -17,6 +17,7 @@ import News from './Components/News/News';
 import PostMessages from "./Components/CRUD/postDocument";
 
 import './App.css'
+import Footer from './Components/Home/Footer';
 
 function App() {
   
@@ -58,9 +59,10 @@ function App() {
           <Route path= "/addNews">
           <Provider store={store}>
               <PostMessages />
-
           </Provider>
+          <Footer />
           </Route>
+          
         </Switch>
       </div>
     </Router>
