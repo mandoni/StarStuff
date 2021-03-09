@@ -1,3 +1,67 @@
 .noticias{
     margin: 1% 10%;
 }
+
+.tarjetas{
+    align-items: center;
+}
+
+.todo{
+    align-items: center;
+    margin: 0% 13%;
+}
+
+.imagen{
+    width: 550px;
+	height: 150px;
+	object-fit: none;
+	background-color: black;
+	
+    margin: 0% 5%;
+}
+
+.overflow{
+	height: 210px;
+	overflow: hidden;
+}
+
+.NoticiasRead{
+    margin: auto;
+    padding: 0% 5% 0% 5%;
+    background: gray;
+    color:  white;
+}
+
+.FormularioCRUD{
+    padding: 5% 5%;
+}
+
+.ItemForm{
+    padding-bottom: 100px;
+}
+
+.BotonEnviar{  margin: 1rem;
+  padding-left: 020px;
+    /* IMPORTANTE */
+    text-align: center;
+}
+.notificacion{
+    background: transparent;
+}
+
+.gotopbtn{
+    
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #27ae60;
+    bottom: 40px;
+    right: 50px;
+  
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-size: 22px;
+  }
+  

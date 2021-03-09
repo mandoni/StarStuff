@@ -128,7 +128,6 @@ const postDocument = ({ classes, ...props }) => {
                                                     onerror="if (this.src == '') ? this.src = '../../Media/no-image.png';"/>
 
                                                     <CardContent >
-                                                         
                                                         <Typography variant="body2" color="textSecondary" component="p">
                                                             {record.encabezado}
                                                         </Typography>

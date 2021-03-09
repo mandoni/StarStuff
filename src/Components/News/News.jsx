@@ -1,37 +1,86 @@
-import React from 'react';
+import React, { Fragment } from 'react'
 import './News.css'
-import { Link } from "react-router-dom";
+import { AppBar, Button, Card, CardActions, CardContent, CardHeader, Grid, List, ListItem, ListItemText, Paper, Typography } from '@material-ui/core';
 
-const News = () => {
-    const [noticia, setNoticia] = React.useState([])
 
-    React.useEffect(() => {
-        obtenerDatos()
+function News(filter) {
+
+    const [noticias, setNoticias] = React.useState([])
+
+    React.useEffect(() =>{
+        console.log("respuesta api")
+        obtenerDocumentos()
     }, [])
 
-    const obtenerDatos = async () => {
-        //const data = await fetch('http://newsapi.org/v2/top-headlines?country=mx&apiKey=6204627390254ac2931b073251803604')
-        const data = await fetch("http://localhost:4000/postDocument")
-        const scsNew = await data.json()
-        setNoticia(scsNew)
+    const obtenerDocumentos = async() => {
+        const data = await fetch('http://localhost:4000/postDocument')
+        const documentos =await data.json()
+        //console.log(documentos)
+        setNoticias(documentos)
     }
-    return(
-        
-        <div className="noticias">
-            <br/><br/>
-            <ul>
+
+    const titulo = () => {
+        switch(filter){
+            case "0":
+                return "Todas las noticias";
+        }
+    }
+
+    return (
+        <div className="todo">
+            <AppBar position="static" color="inherit">
+                <Typography
+                  variant="h4"
+                  align="center">
+                    {titulo()}
+                </Typography>
+            </AppBar>
+            <div className="tarjetas">
+        <Grid item xs={5}>
+            <Paper className="paper">
+                <List>
                 {
-                    noticia.map(item => (
-                        <li key={item._id}>
-                            <Link to = {`/news/${item.title}`}>{item.title}</Link> <br/>
-                            {item.encabezado}
-                            <hr/>
-                        </li>
+                    noticias.map(item => (
+                        <Fragment key={item._id}>
+                            <ListItem>
+                                <ListItemText>
+                                    <Card className="tarjeta">
+                                        <CardHeader
+                                            title={item.title}
+                                            subheader = {item.fecha}
+                                        />
+                                         <img src={item.urlImg} className="imagen overflow" 
+                                                    onerror="if (this.src == '') ? this.src = '../../Media/no-image.png';"/>
+                                    
+                                        <CardContent>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                {item.encabezado}
+                                            </Typography>
+
+                                            <CardActions disableSpacing>
+                                            <div className="btn-div">
+                                                <Button variant="contained" color="primary" size="small"
+                                                    id="myBtn"
+                                                    className="btn-leer"
+                                                    //onClick={() => setCurrentId(record._id)}
+                                                    onclick="topFunction()"
+                                                    href="/#">
+                                                    Leer
+                                                </Button>
+                                            </div>
+                                            </CardActions>
+                                        </CardContent>
+                                    </Card>
+                                </ListItemText>
+                            </ListItem>
+                        </Fragment>
                     ))
                 }
-            </ul>
+                </List>
+            </Paper>
+        </Grid>
+        </div>
         </div>
     )
 }
-
-export default News;
+export default News

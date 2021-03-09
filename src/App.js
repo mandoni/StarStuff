@@ -15,6 +15,7 @@ import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import News from './Components/News/News';
 import PostMessages from "./Components/CRUD/postDocument";
+//import Secciones from "./Components/Ne"
 
 import './App.css'
 import Footer from './Components/Home/Footer';
@@ -61,6 +62,11 @@ function App() {
               <PostMessages />
           </Provider>
           <Footer />
+          </Route>
+
+          <Route path= "/secciones">
+            <News />
+            <Footer />
           </Route>
           
         </Switch>

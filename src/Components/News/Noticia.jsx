@@ -13,7 +13,7 @@ const Noticia = () => {
     }, [])
 
     const obtenerDatos = async () => {
-        const data = await fetch(`http://localhost:4000/postDocument/${_id}`)
+        const data = await fetch(`http://localhost:4000/postDocument/getDocument/${_id}`)
         const scsNew = await data.json()
         setNoticia(scsNew)
     }

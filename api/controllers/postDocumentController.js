@@ -5,12 +5,21 @@ var ObjectID = require('mongoose').Types.ObjectId
 var { postDocument } = require('../models/postDocument')
 
 
+
 router.get('/', (req, res) => { 
     postDocument.find((err, docs) => {
         if (!err) res.send(docs)
         else console.log('Error al leer los registros: ' + JSON.stringify(err, undefined, 2))
     })
 })
+
+router.get('/getDocument/:id', (req, res) => { 
+        postDocument.findById(req.params.id, (err, docs)=> {
+            if (!err) res.send(docs)
+            else console.log('Error al eliminer el registro: ' + JSON.stringify(err, undefined, 2))
+        }
+    )}
+)
 
 router.post('/', (req, res) => {
     var newRecord = new postDocument({
