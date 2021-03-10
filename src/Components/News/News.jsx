@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
-import './News.css'
 import { AppBar, Button, Card, CardActions, CardContent, CardHeader, Grid, List, ListItem, ListItemText, Paper, Typography } from '@material-ui/core';
+import './News.css'
+import FilterMenu from './FilterMenu';
 
+function News(props) {
+    var countNoticias = [0, 0, 0, 0, 0, 0]
 
-function News(filter) {
-
+    console.log(props.secion)
     const [noticias, setNoticias] = React.useState([])
 
     React.useEffect(() =>{
@@ -19,9 +21,37 @@ function News(filter) {
         setNoticias(documentos)
     }
 
+    function count() {
+        //Filtrar y contar los valores de cada seccion 
+        //https://stackoverflow.com/questions/23720988/how-to-filter-json-data-in-javascript-or-jquery
+    }
+
+    
+
+
     const titulo = () => {
-        switch(filter){
-            case "0":
+        //Filtrar siempre que se reciba un parametro
+        switch (props.secion) {
+            case "1":
+                return "Noticias: Espacio"
+
+            case "2":
+                return "Noticias: Tecnología"
+            
+            case "3":
+                return "Noticias: Biología"
+
+            case "4":
+                return "Noticias: Filosofía"
+
+            case "5":
+                return "Noticias: Sociedad"
+
+            case "6":
+                return "Noticias: Física"
+
+
+            default:
                 return "Todas las noticias";
         }
     }
@@ -35,13 +65,13 @@ function News(filter) {
                     {titulo()}
                 </Typography>
             </AppBar>
-            <div className="tarjetas">
-        <Grid item xs={5}>
+            <Grid container>
+        <Grid item xs={8} className="tarjetas">
             <Paper className="paper">
                 <List>
                 {
                     noticias.map(item => (
-                        <Fragment key={item._id}>
+                        <Fragment key={item._id} className="carta">
                             <ListItem>
                                 <ListItemText>
                                     <Card className="tarjeta">
@@ -49,8 +79,7 @@ function News(filter) {
                                             title={item.title}
                                             subheader = {item.fecha}
                                         />
-                                         <img src={item.urlImg} className="imagen overflow" 
-                                                    onerror="if (this.src == '') ? this.src = '../../Media/no-image.png';"/>
+                                         <img src={item.urlImg} className="imagen"/>
                                     
                                         <CardContent>
                                             <Typography variant="body2" color="textSecondary" component="p">
@@ -79,7 +108,11 @@ function News(filter) {
                 </List>
             </Paper>
         </Grid>
-        </div>
+        <Grid item xs={4}>
+            <FilterMenu/>   
+        </Grid>   
+        </Grid> 
+        <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
         </div>
     )
 }

@@ -1,24 +1,51 @@
-.noticias{
-    margin: 1% 10%;
+.tarjetas{
+    margin-top: 10px;
+    align-items: center;
+    float: left;
 }
 
-.tarjetas{
-    align-items: center;
+.filtros{
+    float: left;
+}
+
+.tarjeta-nav{
+    padding: 3%;
+    margin: 1%;
+    width: 360px;
+    text-decoration: none;
+}
+
+.tarjeta-nav:hover{
+    text-decoration: underline;
+    color:blue;
+    font-weight: bold;
+}
+
+.paper{
+    margin-top: 20px;
+}
+
+.imagen{
+    width: 650px;
 }
 
 .todo{
     align-items: center;
-    margin: 0% 13%;
+    margin: 1% 13%;
+}
+
+.carta{
+    background-color: gray;
 }
 
 .imagen{
-    width: 550px;
-	height: 150px;
+    width: 650px;
+	height: 210px;
 	object-fit: none;
 	background-color: black;
-	
     margin: 0% 5%;
 }
+
 
 .overflow{
 	height: 210px;
@@ -44,9 +71,6 @@
   padding-left: 020px;
     /* IMPORTANTE */
     text-align: center;
-}
-.notificacion{
-    background: transparent;
 }
 
 .gotopbtn{

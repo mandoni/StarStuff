@@ -20,16 +20,19 @@ function Cards() {
                             <CardItem className="card-back"
                                 src= {Espacio}
                                 text="Espacio"
+                                secion = "1"
                                 path="/secciones"
                             />
                             <CardItem className="card-back"
                                 src= {Tecnology}
+                                secion = "2"
                                 text="Tecnologia"
                                 path="/secciones"
                             />
                             <CardItem className="card-back"
                                 src= {Biologie}
                                 text="Biología"
+                                secion = "3"
                                 path="/secciones"
                             />
                         </ul>
@@ -37,16 +40,19 @@ function Cards() {
                             <CardItem className="card-back"
                                 src= {Philosophy}
                                 text="Filosofía"
+                                secion = "4"
                                 path="/secciones"
                             />
                             <CardItem className="card-back"
                                 src= {Society}
                                 text="Sociedad"
+                                secion = "5"
                                 path="/secciones"
                             />
                             <CardItem className="card-back"
                                 src= {Physics}
                                 text="Física"
+                                secion = "6"
                                 path="/secciones"
                             />
                         </ul>
