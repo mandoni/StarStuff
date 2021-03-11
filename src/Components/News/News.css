@@ -19,6 +19,11 @@
     text-decoration: underline;
     color:blue;
     font-weight: bold;
+    background-color: gainsboro;
+}
+
+.tarjeta-nav::selection{
+    background-color: gray;
 }
 
 .paper{
@@ -38,9 +43,9 @@
     background-color: gray;
 }
 
-.imagen{
-    width: 650px;
-	height: 210px;
+.imagen-sec{
+    width: 645px;
+	height: 230px;
 	object-fit: none;
 	background-color: black;
     margin: 0% 5%;
@@ -72,6 +77,17 @@
     /* IMPORTANTE */
     text-align: center;
 }
+
+.btn-leer:hover{
+    color: white;
+}
+
+.btn-leer{
+    margin-left: 100px;
+    height: 35px;
+    width: 70px;
+}
+
 
 .gotopbtn{
     

@@ -1,59 +1,76 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { AppBar, Button, Card, CardActions, CardContent, CardHeader, Grid, List, ListItem, ListItemText, Paper, Typography } from '@material-ui/core';
 import './News.css'
 import FilterMenu from './FilterMenu';
 
 function News(props) {
-    var countNoticias = [0, 0, 0, 0, 0, 0]
+    const countNoticias = [0, 0, 0, 0, 0, 0, 0]
 
-    console.log(props.secion)
-    const [noticias, setNoticias] = React.useState([])
+    
+    const [noticias, setNoticias] = useState([])
+    const [noticiasFiltradas, setNoticiasFiltradas] = useState([])
+    const [tituloN, setTitulo] = useState("Todas las noticias")
 
-    React.useEffect(() =>{
-        console.log("respuesta api")
+    useEffect(() =>{
+        //console.log("respuesta api")
         obtenerDocumentos()
     }, [])
 
     const obtenerDocumentos = async() => {
+        
         const data = await fetch('http://localhost:4000/postDocument')
         const documentos =await data.json()
         //console.log(documentos)
         setNoticias(documentos)
+        setNoticiasFiltradas(documentos)
+        
     }
 
     function count() {
-        //Filtrar y contar los valores de cada seccion 
-        //https://stackoverflow.com/questions/23720988/how-to-filter-json-data-in-javascript-or-jquery
+        //Todas las noticias 
+        countNoticias[0] = Object.keys(noticias).length
+        
+        //Espacio
+        var noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '1')
+        countNoticias[1] = Object.keys(noticiasFiltradas1).length
+        //setNoticiasFiltradas(noticias)
+
+        //Tecnologia
+        noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '2')
+        countNoticias[2] = Object.keys(noticiasFiltradas1).length
+        //setNoticiasFiltradas(noticias)
+
+        //Biologia
+        noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '3')
+        countNoticias[3] = Object.keys(noticiasFiltradas1).length
+        //setNoticiasFiltradas(noticias)
+
+        //Filosofia
+        noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '4')
+        countNoticias[4] = Object.keys(noticiasFiltradas1).length
+        //setNoticiasFiltradas(noticias)
+
+        //sociedad
+        noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '5')
+        countNoticias[5] = Object.keys(noticiasFiltradas1).length
+        //setNoticiasFiltradas(noticias)
+
+        //Fisica
+        noticiasFiltradas1 = noticias.filter(noticia => noticia.seccion === '6')
+        countNoticias[6] = Object.keys(noticiasFiltradas1).length
+        setNoticiasFiltradas(noticias)
+
+        console.log(countNoticias)
     }
-
     
-
-
-    const titulo = () => {
-        //Filtrar siempre que se reciba un parametro
-        switch (props.secion) {
-            case "1":
-                return "Noticias: Espacio"
-
-            case "2":
-                return "Noticias: Tecnología"
-            
-            case "3":
-                return "Noticias: Biología"
-
-            case "4":
-                return "Noticias: Filosofía"
-
-            case "5":
-                return "Noticias: Sociedad"
-
-            case "6":
-                return "Noticias: Física"
-
-
-            default:
-                return "Todas las noticias";
+    const cambiarListado = (tema) => {
+        if(tema == '0'){
+            setNoticiasFiltradas(noticias)
+            return;
         }
+        const noticiasFiltradas = noticias.filter(noticia => noticia.seccion === tema)
+        //console.log(noticiasFiltradas)
+        setNoticiasFiltradas(noticiasFiltradas)
     }
 
     return (
@@ -62,7 +79,7 @@ function News(props) {
                 <Typography
                   variant="h4"
                   align="center">
-                    {titulo()}
+                    {tituloN}
                 </Typography>
             </AppBar>
             <Grid container>
@@ -70,7 +87,7 @@ function News(props) {
             <Paper className="paper">
                 <List>
                 {
-                    noticias.map(item => (
+                    noticiasFiltradas.map(item => (
                         <Fragment key={item._id} className="carta">
                             <ListItem>
                                 <ListItemText>
@@ -79,7 +96,7 @@ function News(props) {
                                             title={item.title}
                                             subheader = {item.fecha}
                                         />
-                                         <img src={item.urlImg} className="imagen"/>
+                                         <img src={item.urlImg} className="imagen-sec"/>
                                     
                                         <CardContent>
                                             <Typography variant="body2" color="textSecondary" component="p">
@@ -109,11 +126,60 @@ function News(props) {
             </Paper>
         </Grid>
         <Grid item xs={4}>
-            <FilterMenu/>   
+        <div className="filtros">
+            <Fragment className="carta">
+                <ListItem>
+                <ListItemText>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo('Todas las Noticias')
+                        cambiarListado('0')
+                    }}>
+                        Todas las noticias ({countNoticias[0]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias espaciales")
+                        cambiarListado('1')
+                    }}>
+                        Espacio ({countNoticias[1]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias de Tecnología")
+                        cambiarListado('2')
+                    }}>
+                         Tecnología({countNoticias[2]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias de Biología")
+                        cambiarListado('3')
+                    }}>
+                        Biología({countNoticias[3]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias de filosofía")
+                        cambiarListado('4')
+                    }}>
+                        Filosofía ({countNoticias[4]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias de sociedad")
+                        cambiarListado('5')
+                    }}>
+                        Sociedad ({countNoticias[5]})
+                    </Card>
+                    <Card className="tarjeta-nav" onClick={() => {
+                        setTitulo("Noticias de Física")
+                        cambiarListado('6')
+                    }}>
+                        Física ({countNoticias[6]})
+                    </Card>
+                    </ListItemText>
+                </ListItem>
+            </Fragment>
+        </div>  
         </Grid>   
         </Grid> 
-        <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+        <FilterMenu/>
         </div>
     )
 }
-export default News
+export default News;
