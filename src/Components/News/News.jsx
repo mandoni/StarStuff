@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 import { AppBar, Button, Card, CardActions, CardContent, CardHeader, Grid, List, ListItem, ListItemText, Paper, Typography } from '@material-ui/core';
 import './News.css'
 import FilterMenu from './FilterMenu';
 
 function News(props) {
-    const countNoticias = [0, 0, 0, 0, 0, 0, 0]
-
-    
+    const [nCount, setNCount] = useState([0,0,0,0,0,0,0])    
     const [noticias, setNoticias] = useState([])
     const [noticiasFiltradas, setNoticiasFiltradas] = useState([])
     const [tituloN, setTitulo] = useState("Todas las noticias")
@@ -14,19 +13,20 @@ function News(props) {
     useEffect(() =>{
         //console.log("respuesta api")
         obtenerDocumentos()
+        count()
     }, [])
 
     const obtenerDocumentos = async() => {
-        
         const data = await fetch('http://localhost:4000/postDocument')
         const documentos =await data.json()
         //console.log(documentos)
         setNoticias(documentos)
         setNoticiasFiltradas(documentos)
-        
     }
 
-    function count() {
+    const count = async() => {
+        const countNoticias = [0, 0, 0, 0, 0, 0, 0]
+
         //Todas las noticias 
         countNoticias[0] = Object.keys(noticias).length
         
@@ -60,10 +60,11 @@ function News(props) {
         countNoticias[6] = Object.keys(noticiasFiltradas1).length
         setNoticiasFiltradas(noticias)
 
-        console.log(countNoticias)
+        setNCount(countNoticias)
     }
     
     const cambiarListado = (tema) => {
+        count()
         if(tema == '0'){
             setNoticiasFiltradas(noticias)
             return;
@@ -92,12 +93,18 @@ function News(props) {
                             <ListItem>
                                 <ListItemText>
                                     <Card className="tarjeta">
-                                        <CardHeader
-                                            title={item.title}
-                                            subheader = {item.fecha}
-                                        />
-                                         <img src={item.urlImg} className="imagen-sec"/>
-                                    
+                                        <li key={item._id}>
+                                            
+                                            <CardHeader
+                                                title={item.title}
+                                                subheader = {item.fecha}
+                                            />
+                                            
+                                            <Link to={`/news/${item._id}`} className="titulo-not">
+                                                <img src={item.urlImg} className="imagen-sec"/>
+                                            </Link>
+                                        </li>
+
                                         <CardContent>
                                             <Typography variant="body2" color="textSecondary" component="p">
                                                 {item.encabezado}
@@ -105,14 +112,16 @@ function News(props) {
 
                                             <CardActions disableSpacing>
                                             <div className="btn-div">
+                                                <li key={item._id}>
+                                                <Link to={`/news/${item._id}`} className="titulo-not">
                                                 <Button variant="contained" color="primary" size="small"
                                                     id="myBtn"
                                                     className="btn-leer"
-                                                    //onClick={() => setCurrentId(record._id)}
-                                                    onclick="topFunction()"
-                                                    href="/#">
+                                                    onClick= {console.log("x")}>
                                                     Leer
                                                 </Button>
+                                                </Link>
+                                                </li>
                                             </div>
                                             </CardActions>
                                         </CardContent>
@@ -133,44 +142,51 @@ function News(props) {
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo('Todas las Noticias')
                         cambiarListado('0')
+                        //count()
                     }}>
-                        Todas las noticias ({countNoticias[0]})
+                        Todas las noticias ({nCount[0]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias espaciales")
                         cambiarListado('1')
+                        //count()
                     }}>
-                        Espacio ({countNoticias[1]})
+                        Espacio ({nCount[1]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Tecnología")
                         cambiarListado('2')
+                        //count()
                     }}>
-                         Tecnología({countNoticias[2]})
+                         Tecnología({nCount[2]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Biología")
                         cambiarListado('3')
+                        //count()
                     }}>
-                        Biología({countNoticias[3]})
+                        Biología({nCount[3]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de filosofía")
                         cambiarListado('4')
+                        //count()
                     }}>
-                        Filosofía ({countNoticias[4]})
+                        Filosofía ({nCount[4]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de sociedad")
                         cambiarListado('5')
+                        //count()
                     }}>
-                        Sociedad ({countNoticias[5]})
+                        Sociedad ({nCount[5]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Física")
                         cambiarListado('6')
+                        //count()
                     }}>
-                        Física ({countNoticias[6]})
+                        Física ({nCount[6]})
                     </Card>
                     </ListItemText>
                 </ListItem>

@@ -1,7 +1,6 @@
 import React from 'react';
 import loginImg from '../../Media/register-logo.svg'
 import '../Login/Login.css'
-import { Link } from "react-router-dom";
 
 class Signup extends React.Component {
     constructor(props) {

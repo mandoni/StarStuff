@@ -22,8 +22,8 @@
     background-color: gainsboro;
 }
 
-.tarjeta-nav::selection{
-    background-color: gray;
+.titulo-not{
+    text-decoration: none;
 }
 
 .paper{
@@ -103,5 +103,10 @@
     line-height: 50px;
     color: white;
     font-size: 22px;
+  }
+
+  .noticia-sola{
+      
+      margin: 3% 10%;
   }
   

@@ -11,7 +11,7 @@ import Physics from '../../Media/physics.svg'
 
 function Cards() {
     return (
-        <a name="secciones">
+        <a name="secciones" href="">
             <div className="cards">
                 <h1>Secciones principales</h1>
                 <div className="cards__container">

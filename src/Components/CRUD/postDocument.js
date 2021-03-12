@@ -6,7 +6,7 @@ import { CardHeader, Avatar, IconButton,  } from "@material-ui/core";
 import { AppBar, Container, Typography, Paper, withStyles, CardContent, CardActions } from "@material-ui/core";
 import PostDocumentForm from './postDocumentForm';
 import ButterToast, { POS_RIGHT, POS_TOP, Cinnamon } from "butter-toast";
-import { DeleteSweep, RecordVoiceOver } from "@material-ui/icons";
+import { DeleteSweep } from "@material-ui/icons";
 import './postDocumentForm.css'
 import { blueGrey } from '@material-ui/core/colors';
 
@@ -84,9 +84,7 @@ const postDocument = ({ classes, ...props }) => {
         }
     }
 
-    const Img = (url) =>{
-        return url
-    }
+ 
 
 
     return (
@@ -139,6 +137,7 @@ const postDocument = ({ classes, ...props }) => {
                                                                 className={classes.smMargin}
                                                                 onClick={() => setCurrentId(record._id)}
                                                                 onclick="topFunction()"
+                                                                alt =""
                                                                 href="#">
                                                                 Editar
                                                             </Button>

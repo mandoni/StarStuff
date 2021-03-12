@@ -3,7 +3,7 @@ import './Home.css'
 
 const About = () => {
     return (
-        <a name ="nosotros">
+        <a name ="nosotros" href="">
             <div className="about-component">
                 <h1 className="titulo">
                     Acerca de StarStuff 

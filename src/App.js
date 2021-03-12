@@ -14,6 +14,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import News from './Components/News/News';
+import Nota from "./Components/News/Noticia";
 import PostMessages from "./Components/CRUD/postDocument";
 //import Secciones from "./Components/Ne"
 
@@ -35,8 +36,9 @@ function App() {
           <Route path= "/home">
             <Home />
           </Route>
-          <Route path= "/news">
-            <News />
+          <Route path= "/news/:id" exact>
+            <Nota />
+            <Footer />
           </Route>
           <Route path= "/login">
             <div className="mini-nav">
