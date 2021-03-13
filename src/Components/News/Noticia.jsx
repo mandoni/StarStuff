@@ -1,13 +1,14 @@
 import { Card, Grid, ListItem, ListItemText, Paper, Typography } from '@material-ui/core'
 import React, { Fragment, useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import FilterMenu from './FilterMenu'
 import './News.css'
 
 const Noticia = () => {
     const { id } = useParams()
     const [nCount, setNCount] = useState([0, 0, 0, 0, 0, 0, 0])
     const [noticia, setNoticia] = useState([])
-    var noticias =  []
+    var noticias = []
 
     useEffect(() => {
         obtenerDocumento()
@@ -65,15 +66,60 @@ const Noticia = () => {
         setNCount(countNoticias)
     }
 
+    const secc = () => {
+        switch (noticia.seccion) {
+            case '1':
+                return "Espacio"
+            case '2':
+                return "Tecnología"
+            case '3':
+                return "Biología"
+            case '4':
+                return "Filosofía"
+            case '5':
+                return "Sociedad"
+            case '6':
+                return "Física"
+        }
+    }
+
+    /*const parrafos = () => {
+        return noticia.documento.split("\n")  
+    }*/
+
     return (
         <div className="noticia-sola">
             <Grid container>
-                <Grid item xs={8} className="tarjetas">
-                    <Paper className="paper">
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {noticia.title}
-                        </Typography>
-                    </Paper>
+                <Grid item xs={8} className="tarjetas-sola">
+                    <div className="container-one-new">
+                        <Paper className="paper">
+                            <Typography variant="h3" color="textPrimary" className="margen-text">
+                                {noticia.title}
+                            </Typography>
+                            <Typography variant="subtitle1" className="margen-text" color="textSecondary" gutterBottom component="p">
+                                Autor de nota {noticia.autor} 
+                            </Typography>
+                            <Typography variant="overline" className="margen-text" color="textSecondary" gutterBottom component="p">
+                                Sección: {secc()}
+                            </Typography>
+                            <Typography variant="overline" className="margen-text" color="textSecondary" gutterBottom component="p">
+                                {noticia.fecha}
+                            </Typography>
+                            <p className="header-new">
+                                {noticia.encabezado}
+                            </p><br/>
+
+                            <img src={noticia.urlImg} className="imagen-noticia-completa"/><br/>
+
+                            <p className="nota-completa">
+                                {noticia.documento}
+                            </p>
+
+                            <p className="fuente">
+                                {noticia.fuente} <a href={noticia.urlFuente}>Paper original</a>
+                            </p>
+                        </Paper>
+                    </div>
                 </Grid>
 
                 <Grid item xs={4}>
@@ -135,8 +181,18 @@ const Noticia = () => {
                     </div>
                 </Grid>
             </Grid>
+            <FilterMenu/>
         </div>
     )
 }
 
 export default Noticia
+/*<p className="nota-completa">
+                                {
+                                    parrafos.map(parr =>(
+                                        <p className="s">
+                                            {parr[0]}
+                                        </p>
+                                    ))
+                                }
+                            </p>*/

@@ -106,7 +106,45 @@
   }
 
   .noticia-sola{
-      
       margin: 3% 10%;
   }
+
+  .tarjetas-sola{
+    margin-top: 10px;
+    align-items: center;
+    float: left;
+}
+
+.header-new{
+  font-style: italic;
+  font-size: 20px;
+  margin: 0px 20px ;
+}
+
+.imagen-noticia-completa{
+    width: 765px;
+    height: 400px;
+    overflow: hidden;
+    margin: 1px 20px;
+    position: relative;
+    
+}
+
+.margen-text{
+    margin: 1px 20px;
+}
+
+.nota-completa{
+    font-style: unset;
+    font-size: 20px;
+    margin: 35px 20px ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fuente{
+    font-style: oblique;
+    font-size: 18px;
+    margin: 40px 20px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
   
