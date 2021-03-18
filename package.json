@@ -11,10 +11,12 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
     "butter-toast": "^3.3.5",
     "cors": "^2.8.5",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "^17.0.1",
@@ -52,15 +54,3 @@
     ]
   }
 }
-
-/*
-    Login
-    mern-auth
-    concurrently front y back en puertos distintos
-    bcryptjs hash pw 
-    is-empty validar form
-    jsonwebtoken auth
-    passport auth requests 
-    passport-jwt tokens
-    validate inputs
-  */
