@@ -1,13 +1,14 @@
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import loginImg from '../../Media/register-logo.svg';
+import { Grid, TextField } from '@material-ui/core';
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import React, { Component } from "react";
+import { Mail } from '@material-ui/icons';
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import './Login.css'
-import { Grid, TextField } from '@material-ui/core';
-import { Mail } from '@material-ui/icons';
+
 
 class Signup extends Component {
     constructor() {
