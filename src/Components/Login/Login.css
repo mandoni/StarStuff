@@ -28,6 +28,13 @@
     padding: 5%;
 }
 
+.content-reg{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 5px #76858f96;
+    padding: 3%;
+    height: 350px;
+}
 
 .form{
     margin-top: 0px;
