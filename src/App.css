@@ -58,7 +58,6 @@
   outline: none; 
   border: none;
   cursor: pointer;
-  margin: auto;
   position: relative;
   background-color: #778F14;
   color: white;
@@ -73,7 +72,11 @@
 }
 
 .mini-nav{
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 1.8%;
+  width: auto;
+  margin-top: 3%;
+  margin-left: 25%;
+}
+
+.btn-regis-div{
+  margin-left: 310%;
 }
