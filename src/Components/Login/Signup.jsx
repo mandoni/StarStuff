@@ -1,14 +1,15 @@
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { registerUser } from "../../Actions/authActions";
 import loginImg from '../../Media/register-logo.svg';
 import { Grid, TextField } from '@material-ui/core';
-import MailIcon from '@material-ui/icons/Mail';
+import { withRouter } from "react-router-dom";
 import LockIcon from '@material-ui/icons/Lock';
 import React, { Component } from "react";
-import { Mail } from '@material-ui/icons';
-import { Link } from "react-router-dom";
+import { Mail } from '@material-ui/icons'
+import { connect } from 'react-redux';
 import classnames from "classnames";
+import PropTypes from "prop-types";
 import './Login.css'
-
 
 class Signup extends Component {
     constructor() {
@@ -20,6 +21,14 @@ class Signup extends Component {
             password2: "",
             errors: {}
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     onChange = e => {
@@ -35,7 +44,13 @@ class Signup extends Component {
             password2: this.state.password2
         }
         console.log(newUser);
+
+        this.props.registerUser(newUser, this.props.history);
     }
+
+
+
+
     render() {
         const { errors } = this.state;
         return (
@@ -60,7 +75,11 @@ class Signup extends Component {
                                     error={errors.name}
                                     id="name"
                                     type="text"
+                                    className={classnames("", {
+                                        invalid: errors.name
+                                    })}
                                 />
+                                <span className="red-text">{errors.name}</span>
                             </Grid>
                         </Grid>
                     </div>
@@ -76,7 +95,11 @@ class Signup extends Component {
                                     error={errors.email}
                                     id="email"
                                     type="email"
+                                    className={classnames("", {
+                                        invalid: errors.email
+                                    })}
                                 />
+                                <span className="red-text">{errors.email}</span>
                             </Grid>
                         </Grid>
                     </div>
@@ -92,7 +115,11 @@ class Signup extends Component {
                                     error={errors.password}
                                     id="password"
                                     type="password"
+                                    className={classnames("", {
+                                        invalid: errors.password
+                                    })}
                                 />
+                                <span className="red-text">{errors.password}</span>
                             </Grid>
                         </Grid>
                     </div>
@@ -108,13 +135,17 @@ class Signup extends Component {
                                     error={errors.password2}
                                     id="password2"
                                     type="password"
+                                    className={classnames("", {
+                                        invalid: errors.password2
+                                    })}
                                 />
+                                <span className="red-text">{errors.password2}</span>
                             </Grid>
                         </Grid>
                     </div>
-                    <div className="footer col s12" style={{ paddingLeft: "11.250px" }}>
+                    <div className="footer col s12" style={{ paddingLeft: "38px" }}>
                         <button
-                           className="btn-login"
+                            className="btn-login"
                             type="submit"
                             className="btn-login"
                         >
@@ -125,4 +156,22 @@ class Signup extends Component {
             </div>
         )
     }
-} export default Signup;
+}
+
+//to define types in our constructor
+Signup.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+///alow us to call props.auth or props.erros within Signup component 
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { registerUser }
+)(withRouter(Signup))

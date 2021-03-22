@@ -1,12 +1,14 @@
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { loginUser } from "../../Actions/authActions";
+import { Grid, TextField } from '@material-ui/core';
 import loginImg from '../../Media/login-logo.svg'
 import LockIcon from '@material-ui/icons/Lock';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import PropTypes from "prop-types";
 import './Login.css'
-import { Grid, TextField } from '@material-ui/core';
-
-
 
 class Login extends Component {
 
@@ -16,6 +18,17 @@ class Login extends Component {
             email: "",
             password: "",
             errors: {}
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
+            // push user to dashboard when they login
+        } if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
         }
     }
 
@@ -30,6 +43,7 @@ class Login extends Component {
             password: this.state.password
         }
         console.log(userData);
+        this.props.loginUser(userData);
     }
 
     render() {
@@ -56,7 +70,14 @@ class Login extends Component {
                                     error={errors.email}
                                     id="email"
                                     type="email"
+                                    className={classnames("", {
+                                        invalid: errors.email || errors.emailnotfound
+                                    })}
                                 />
+                                <span className="red-text">
+                                    {errors.email}
+                                    {errors.emailnotfound}
+                                </span>
                             </Grid>
                         </Grid>
                     </div>
@@ -72,11 +93,18 @@ class Login extends Component {
                                     error={errors.password}
                                     id="password"
                                     type="password"
+                                    className={classnames("", {
+                                        invalid: errors.password || errors.passwordincorrect
+                                    })}
                                 />
+                                <span className="red-text">
+                                    {errors.password}
+                                    {errors.passwordincorrect}
+                                </span>
                             </Grid>
                         </Grid>
                     </div>
-                    <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                    <div className="col s12" style={{ paddingLeft: "25px", marginTop:"20px"  }}>
                         <button
                             style={{
                                 width: "150px",
@@ -96,5 +124,20 @@ class Login extends Component {
     }
 }
 
-export default Login;
+//to define types in our constructor
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+}
 
+///alow us to call props.auth or props.erros within Signup component 
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(Login);
