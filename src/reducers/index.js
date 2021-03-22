@@ -4,4 +4,5 @@ import { postDocument } from "./postDocuments";
 
 export const reducers = combineReducers({
     postDocument
-})
+});
+
