@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Avatar, Button, Typography } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import { Button } from '../Button';
+import useStyles from './styles';
 import './Navbar.css'
 
 function Navbar() {
@@ -10,9 +11,9 @@ function Navbar() {
     const closeMobilMenu = () => setClick(false);
 
     const showButton = () => {
-        if(window.innerWidth <= 960){
+        if (window.innerWidth <= 960) {
             setButton(false)
-        }else{
+        } else {
             setButton(true)
         }
     };
@@ -20,6 +21,11 @@ function Navbar() {
     useEffect(() => {
         showButton()
     }, [])
+
+    const classes = useStyles();
+
+    const user = null;
+
 
     window.addEventListener('resize', showButton);
 
@@ -33,15 +39,15 @@ function Navbar() {
                     <div className="menu-icon" onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
                     </div>
-                    <ul className={click ? 'nav-menu active': 'nav-menu'}>
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className="nav-item">
                             <Link to="/home" className="nav-links" onClick={closeMobilMenu}>
                                 Inicio
                             </Link>
                         </li>
                         <li className="nav-item">
-                                <a href="/home#secciones" className="nav-links" onClick={closeMobilMenu}>
-                                    Secciones
+                            <a href="/home#secciones" className="nav-links" onClick={closeMobilMenu}>
+                                Secciones
                                 </a>
                         </li>
                         <li className="nav-item">
@@ -50,9 +56,18 @@ function Navbar() {
                             </a>
                         </li>
                         <li className="nav-item-login">
-                            <Link to="/login" className="nav-links" onClick={closeMobilMenu}>
-                                Login
-                            </Link>
+                            {user ? (
+                                <div className={classes.profile}>
+                                    <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+                                    <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+                                    <Button variant="contained" className={classes.logout} color="secondary">Salir</Button>
+                                </div>
+                            ) : (
+                                    <Link to="/login" className="nav-links" onClick={closeMobilMenu}>
+                                        Login
+                                    </Link>
+                                )
+                            }
                         </li>
                     </ul>
                 </div>
