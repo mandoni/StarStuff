@@ -41,19 +41,7 @@ function App() {
             <Footer />
           </Route>
           <Route path="/login">
-            <div className="mini-nav">
-              <div className="div-exit-btn">
-                <Link to="/home">
-                  <button type="button" className="btn-close">X</button>
-                </Link>
-              </div>
-              <div className="btn-regis-div">
-                <Link to="/signup">
-                  <button type="button" className="btn-routing">Registro</button>
-                </Link>
-              </div>
-            </div>
-            <Login />
+               <Signup />
           </Route>
           <Route path="/signup">
             <div className="mini-nav">
@@ -64,9 +52,9 @@ function App() {
             <Signup />
           </Route>
           <Route path="/addNews">
-            <Provider store={store}>
+            
               <PostMessages />
-            </Provider>
+            
             <Footer />
           </Route>
 
