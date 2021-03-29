@@ -1,4 +1,4 @@
-import { Avatar, Button, Paper, Grid, Typography, Container} from '@material-ui/core';
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import React, { useState } from "react";
 import { AirlineSeatIndividualSuiteRounded, Mail } from '@material-ui/icons'
@@ -9,25 +9,42 @@ import Input from "./Input"
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login'
 import Ico from "./icon"
+import { signin, signup } from "../../Actions/auth";
 
 import useStyles from "./styles"
 import './Login.css'
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    correo: '',
+    password: '',
+    confirmPassword: ''
+}
 
 export const Signup = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState)
 
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSubmmi = () => {
+    const handleSubmmi = (e) => {
+        e.preventDefault()
+        console.log(formData)
 
+        if (isSignup) {
+            dispatch(signup(formData, history))
+        } else {
+            dispatch(signin(formData, history))
+        }
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const switchMode = () => {
@@ -37,21 +54,21 @@ export const Signup = () => {
 
     const handleShowPassword = () =>
         setShowPassword((prevShowPassword) => !prevShowPassword)
- 
-    const googleSuccess = async (res) =>{
-        const result = res.profileObj;
-        const token = res.tokenId;
-    
+
+    const googleSuccess = async (res) => {
+        const result = res && res.profileObj;
+        const token = res && res.tokenId;
+
         try {
-          dispatch({ type: 'AUTH', data: { result, token } });
-    
-          history.push('/');
+            dispatch({ type: 'AUTH', data: { result, token } });
+
+            history.push('/');
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
     }
 
-    const googleError = () =>{
+    const googleError = () => {
         console.log("Google error")
     }
 
@@ -66,8 +83,8 @@ export const Signup = () => {
                             {
                                 isSignup && (
                                     <>
-                                        <Input name="firstsbname" label="Nombre" handleChange={handleChange} autoFocus half />
-                                        <Input name="lastname" label="Apellido" handleChange={handleChange} half />
+                                        <Input name="firstName" label="Nombre" handleChange={handleChange} autoFocus half />
+                                        <Input name="lastName" label="Apellido" handleChange={handleChange} half />
                                     </>
                                 )
                             }
@@ -83,14 +100,14 @@ export const Signup = () => {
                         <GoogleLogin
                             clientId="447319009478-a0bvu7re26u7c9bjgl3h7ufhg3ks9sod.apps.googleusercontent.com"
                             render={(renderProps) => (
-                                <Button 
-                                    className={classes.googleButton} 
-                                    color="secondary" 
+                                <Button
+                                    className={classes.googleButton}
+                                    color="secondary"
                                     fullWidth
-                                    onClick={renderProps.onClick} 
-                                    disabled={renderProps.disabled} 
-                                    startIcon={<Ico />} 
-                                    variant="contained"> Google 
+                                    onClick={renderProps.onClick}
+                                    disabled={renderProps.disabled}
+                                    startIcon={<Ico />}
+                                    variant="contained"> Google
                                 </Button>
                             )}
                             onSuccess={googleSuccess}
