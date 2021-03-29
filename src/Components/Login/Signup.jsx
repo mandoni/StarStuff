@@ -20,7 +20,7 @@ export const Signup = () => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const history = useHistory()
+    const history = useHistory();
 
     const handleSubmmi = () => {
 
