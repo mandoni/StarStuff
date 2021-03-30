@@ -1,4 +1,5 @@
 require('./db')
+import { mongoose } from "mongoose";
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -23,3 +24,8 @@ app.get('/api/documents', (req, res) => {
 });
 
 app.use('/postDocument', postDocumentRoutes) 
+
+///----user 
+import  userRoutes from "./routes/users";
+
+app.use('/user', userRoutes)
