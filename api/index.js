@@ -1,11 +1,11 @@
 require('./db')
-import { mongoose } from "mongoose";
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-var postDocumentRoutes = require('./controllers/postDocumentController')
+
+var postDocumentRoutes = require('./controllers/postDocumentController');
 
 
 var app = express()     //configurar el body-parser
@@ -26,6 +26,5 @@ app.get('/api/documents', (req, res) => {
 app.use('/postDocument', postDocumentRoutes) 
 
 ///----user 
-import  userRoutes from "./routes/users.js";
 
-app.use('/user', userRoutes)
+//app.use('/user', userRoutes)

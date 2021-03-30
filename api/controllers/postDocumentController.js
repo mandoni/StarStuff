@@ -21,9 +21,9 @@ router.get('/getDocument/:id', (req, res) => {
     )}
 )
 
-import { auth } from "../middleware/auth.js";
+var auth = require ("../middleware/auth.js");
 
-router.post('/', auth, (req, res) => {
+router.post('/', (req, res) => {
     var newRecord = new postDocument({
         title: req.body.title,
         autor: req.body.autor,
@@ -42,7 +42,7 @@ router.post('/', auth, (req, res) => {
     })
 })
 
-router.put('/:id', auth, (req, res) => {
+router.put('/:id', (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send('Registro no encontrado : ' + req.params.id)
 
@@ -64,7 +64,7 @@ router.put('/:id', auth, (req, res) => {
     })
 })
 
-router.delete('/:id', auth, (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID de registro no encontrado: ' + req.params.id)
 
