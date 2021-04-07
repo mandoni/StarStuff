@@ -26,7 +26,7 @@ export const Signup = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState(initialState)
+    const [form, setForm] = useState(initialState)
 
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -34,17 +34,17 @@ export const Signup = () => {
 
     const handleSubmmi = (e) => {
         e.preventDefault()
-        console.log(formData)
+        //console.log(formData)
 
         if (isSignup) {
-            dispatch(signup(formData, history))
+            dispatch(signup(form, history));
         } else {
-            dispatch(signin(formData, history))
+            dispatch(signin(form, history));
         }
     }
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
 
     const switchMode = () => {

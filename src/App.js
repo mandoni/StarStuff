@@ -5,13 +5,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./Actions/store";
+//import { Provider } from "react-redux";
+//import { store } from "./Actions/store";
 
 
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
-import Login from './Components/Login/Login';
 import Signup from './Components/Login/Signup';
 import News from './Components/News/News';
 import Nota from "./Components/News/Noticia";

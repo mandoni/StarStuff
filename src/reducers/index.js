@@ -7,3 +7,4 @@ export const reducers = combineReducers({
     postDocument,
     auth
 })
+
