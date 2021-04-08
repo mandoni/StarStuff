@@ -11,6 +11,8 @@
     top: 0;
     z-index: 999;
   }
+
+  
   
   .navbar-container {
     display: flex;
@@ -57,7 +59,7 @@
     height: 80px;
     display: flex;
     align-items: center;
-    text-decoration: solid;
+    text-decoration: none;
     background-color: rgb(223, 223, 223);
   }
 
@@ -92,6 +94,11 @@
   
   .menu-icon {
     display: none;
+  }
+
+  .espacio-usuario{
+    text-decoration:none;
+    
   }
   
   @media screen and (max-width: 960px) {

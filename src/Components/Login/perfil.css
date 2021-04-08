@@ -1,0 +1,124 @@
+.front-sin-cuenta{
+    text-align: center;
+}
+
+.crear-cuenta{
+    margin: 1rem;
+    margin-left: 11%;
+    width: 75%;
+    height: 485px;
+    padding: 9rem;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+
+.btn{
+    padding: 15px, 35px;
+    margin-top: 2%;
+    height: 40px;
+    width: 140px;
+    border-radius: 4px;
+    background: #7a9414 ;
+    color: white;
+    outline: none; 
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transition:  all 0.5s ease-out;
+    background: #8daa17 ;
+}
+
+/* Social Icons */
+.social-icon-link {
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .social-media {
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .social-media-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+  }
+  
+  .social-logo {
+    color: #fff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .website-rights {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .avatar-cuenta{
+      width: 20px;
+  }
+
+  .front-con-cuenta{
+    text-align: center;
+}
+
+.perfil-css{
+    margin: 1rem;
+    margin-left: 11%;
+    width: 75%;
+    height: 485px;
+    padding: 5rem;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+
+#av{
+    margin-left: 47%;
+    margin-bottom: 20px;
+}
+
+.btn-add{
+    margin-top: 7%;    
+}
+
+  @media screen and (max-width: 820px) {
+    .footer-links {
+      padding-top: 2rem;
+    }
+  
+    .footer-input {
+      width: 100%;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+  
+    .footer-link-wrapper {
+      flex-direction: column;
+    }
+  
+    .social-media-wrap {
+      flex-direction: column;
+    }
+  }

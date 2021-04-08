@@ -4,6 +4,7 @@ import * as actionType from '../../constants/actionTypes';
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
+import decode from 'jwt-decode';
 import './Navbar.css'
 
 function Navbar() {
@@ -45,11 +46,11 @@ function Navbar() {
 
         //JWT
 
-        /*if (token) {
+        if (token) {
             const decodedToken = decode(token);
 
             if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-        }*/ 
+        }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
@@ -84,10 +85,10 @@ function Navbar() {
                         </li>
                         <li className="nav-item-login">
                             {(user && user.result) ? (
-                                <div className={classes.profile}>
-                                    <Avatar className={classes.purple} alt={(user && user.result.name)} src={user.result.imageUrl}>{user && user.result.name.charAt(0)}</Avatar>
-                                    <Typography className={classes.userName} variant="h6">{user &&user.result.name}</Typography>
-                                    <Button variant="contained" className={classes.logout} color="secondary" onClick={logout} >Salir</Button>
+                                <div>
+                                    <Link to="/perfil" className="nav-links">
+                                        <Typography className="espacio-usuario" variant="h6">{user && user.result.name}</Typography>
+                                    </Link>
                                 </div>
                             ) : (
                                     <Link to="/login" className="nav-links" onClick={closeMobilMenu}>

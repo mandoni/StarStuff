@@ -15,10 +15,9 @@ import Signup from './Components/Login/Signup';
 import News from './Components/News/News';
 import Nota from "./Components/News/Noticia";
 import PostMessages from "./Components/CRUD/postDocument";
-//import Secciones from "./Components/Ne"
-
 import './App.css'
 import Footer from './Components/Home/Footer';
+import Perfil from './Components/Login/perfil';
 
 function App() {
 
@@ -60,6 +59,10 @@ function App() {
           <Route path="/secciones">
             <News />
             <Footer />
+          </Route>
+
+          <Route path="/perfil">
+            <Perfil />
           </Route>
 
         </Switch>
