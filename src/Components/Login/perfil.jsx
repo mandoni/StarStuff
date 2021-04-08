@@ -9,7 +9,7 @@ import './perfil.css'
 
 
 const perfil = () => {
-    const history = useHistory();
+    const history = useHistory(); 
     const classes = useStyles();
 
     const dispatch = useDispatch();
