@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/types": "^7.13.14",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
@@ -13,6 +14,7 @@
     "butter-toast": "^3.3.5",
     "chai": "^4.3.4",
     "cors": "^2.8.5",
+    "jest-dom": "^4.0.0",
     "jwt-decode": "^3.1.2",
     "latest": "^0.2.0",
     "moment": "^2.29.1",
@@ -32,7 +34,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:mocha": "mocha",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -52,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/register": "^7.13.14"
   }
 }

@@ -1,0 +1,37 @@
+version: "3"
+services: 
+  starstuff:
+    image: starstuff
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks: 
+      - mern-app
+
+  api:
+    image: api
+    ports: 
+      - "4000:4000"
+    networks: 
+      - mern-app
+    depends_on: 
+      - mongo
+  users:
+
+  mongo:
+    image:  mongo:4.4-bionic
+    ports: 
+      - "27017:27017"
+    networks: 
+      - mern-app
+    volumes:
+      mongo-data:/data/db
+
+networks: 
+  mern-app:
+    driver: bridge
+      
+volumes: 
+  mongo-data:
+    driver: local
+  
