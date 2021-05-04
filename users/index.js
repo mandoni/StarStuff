@@ -14,7 +14,8 @@ app.use(cors());
 //app.use('/posts', postRoutes);
 app.use("/user", userRouter);
 
-const CONNECTION_URL = 'mongodb+srv://tonytaze:ap53tr56xkHWTe7@starstuffusers.n9k9i.mongodb.net/StarStuff';
+//const CONNECTION_URL = 'mongodb+srv://tonytaze:ap53tr56xkHWTe7@starstuffusers.n9k9i.mongodb.net/StarStuff';
+const CONNECTION_URL = 'mongodb://mongo:27017/StarStuff';
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

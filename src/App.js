@@ -18,6 +18,7 @@ import PostMessages from "./Components/CRUD/postDocument";
 import './App.css'
 import Footer from './Components/Home/Footer';
 import Perfil from './Components/Login/perfil';
+import NotFound from "./NotFound";
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
             <Footer />
           </Route>
           <Route path="/login">
-               <Signup />
+            <Signup />
           </Route>
           <Route path="/signup">
             <div className="mini-nav">
@@ -50,9 +51,9 @@ function App() {
             <Signup />
           </Route>
           <Route path="/addNews">
-            
-              <PostMessages />
-            
+
+            <PostMessages />
+
             <Footer />
           </Route>
 
@@ -64,7 +65,9 @@ function App() {
           <Route path="/perfil">
             <Perfil />
           </Route>
-
+          <Route path="/:id">
+            <NotFound />
+          </Route>
         </Switch>
       </div>
     </Router>

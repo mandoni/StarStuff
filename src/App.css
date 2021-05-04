@@ -94,3 +94,22 @@
     margin-right: 50px;;
   }
 }
+
+.fondo-404{
+  background: url('./Media/404.jpg') center center/cover no-repeat;
+  padding: 20;
+  text-align: center;
+  padding: 12.7% 0%;
+}
+
+.h1-404 {
+  color: white;
+  font-size: 60px;
+  -webkit-text-stroke: 1.5px black
+}
+
+.h3-404 {
+  color: white;
+  font-size: 30px;
+  -webkit-text-stroke: 1.5px black
+}

@@ -5,7 +5,8 @@ services:
     restart: unless-stopped
     stdin_open: true
     ports:
-      - "3000:3000"
+      - "80:80"
+      - "443:443"
     networks: 
       - mern-app
     volumes: 
@@ -20,9 +21,20 @@ services:
       - "4000:4000"
     networks: 
       - mern-app
+    depends_on: 
+      - mongo
     volumes: 
     - ./api/:/usr/src/app
     - /usr/src/app/node_modules
+
+  mongo:
+    image: mongo:4.4-bionic
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
 
 networks:
   mern-app:
