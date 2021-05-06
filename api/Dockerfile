@@ -1,4 +1,4 @@
-FROM node:15.14.0-buster-slim
+FROM node:alpine
 
 WORKDIR /user/src/app
 
@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["yarn", "start"]
+CMD ["yarn", "start", "bin www"]
