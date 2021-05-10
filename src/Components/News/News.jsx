@@ -18,10 +18,11 @@ function News(props) {
 
     const obtenerDocumentos = async() => {
         const data = await fetch('http://localhost:4000/postDocument')
-        const documentos =await data.json()
-        //console.log(documentos)
+        const documentos = await data.json()
+        //console.log(documentos)   
         setNoticias(documentos)
         setNoticiasFiltradas(documentos)
+        document.getElemenltById('pedro').click()
     }
 
     const count = async() => {
@@ -60,7 +61,7 @@ function News(props) {
         countNoticias[6] = Object.keys(noticiasFiltradas1).length
         setNoticiasFiltradas(noticias)
 
-        setNCount(countNoticias)
+        setNCount(countNoticias) 
     }
     
     const cambiarListado = (tema) => {
@@ -139,51 +140,51 @@ function News(props) {
             <Fragment className="carta">
                 <ListItem>
                 <ListItemText>
-                    <Card className="tarjeta-nav" onClick={() => {
+                    <Card id = "pedro" className="tarjeta-nav" onClick={() => {
                         setTitulo('Todas las Noticias')
-                        cambiarListado('0')
+                        //cambiarListado('0')
                         //count()
                     }}>
                         Todas las noticias ({nCount[0]})
                     </Card>
-                    <Card className="tarjeta-nav" onClick={() => {
+                    <Card className="tarjeta-nav" onLoad={() => {
                         setTitulo("Noticias espaciales")
-                        cambiarListado('1')
+                        //cambiarListado('1')
                         //count()
                     }}>
                         Espacio ({nCount[1]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Tecnología")
-                        cambiarListado('2')
+                        //cambiarListado('2')
                         //count()
                     }}>
                          Tecnología({nCount[2]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Biología")
-                        cambiarListado('3')
+                        //cambiarListado('3')
                         //count()
                     }}>
                         Biología({nCount[3]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de filosofía")
-                        cambiarListado('4')
+                        //cambiarListado('4')
                         //count()
                     }}>
                         Filosofía ({nCount[4]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de sociedad")
-                        cambiarListado('5')
+                        //cambiarListado('5')
                         //count()
                     }}>
                         Sociedad ({nCount[5]})
                     </Card>
                     <Card className="tarjeta-nav" onClick={() => {
                         setTitulo("Noticias de Física")
-                        cambiarListado('6')
+                        //cambiarListado('6')
                         //count()
                     }}>
                         Física ({nCount[6]})
